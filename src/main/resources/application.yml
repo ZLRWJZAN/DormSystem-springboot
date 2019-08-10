@@ -1,0 +1,23 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/spring
+    username: root
+    password: ps123456
+    type: com.alibaba.druid.pool.DruidDataSource
+
+mybatis:
+  type-handlers-package: com.ps.dorm.typeHandler
+  type-aliases-package: com.ps.dorm
+  mapper-locations: /mapperXml/*.xml
+
+pagehelper:
+    helperDialect: mysql
+    pageSizeZero: true
+
+logging:
+  path: D:\log
+  level.com.ps.dorm.controller: info
+debug: true
+
+

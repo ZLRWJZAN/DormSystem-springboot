@@ -1,0 +1,57 @@
+package com.ps.dorm.service.impl;
+
+import com.github.pagehelper.PageHelper;
+import com.ps.dorm.domain.StudentDo;
+import com.ps.dorm.mapper.StuMapper;
+import com.ps.dorm.service.StudentService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+/**
+ * 作者：ZLRWJSAN
+ * 创建于 2019/6/10 22:01
+ */
+@Service
+public class StudentServiceImpl implements StudentService {
+    @Autowired
+    private StuMapper stuMapper;
+
+    @Override
+    public void add(StudentDo studentDo) {
+        stuMapper.stuInsert(studentDo);
+    }
+
+    @Override
+    public void update(StudentDo studentDo) {
+        stuMapper.stuUpdate(studentDo);
+    }
+
+    @Override
+    public void delete(StudentDo studentDo) {
+        stuMapper.stuDelete(studentDo);
+    }
+
+    @Override
+    public List<StudentDo> query() {
+        return stuMapper.stuSelect();
+    }
+
+    @Override
+    public List<StudentDo> queryDetail() {
+        return stuMapper.stuSelectDetail();
+    }
+
+    @Override
+    public List<StudentDo> queryLoveCount() {
+        return stuMapper.stuLoveCount();
+    }
+
+    @Override
+    public List<StudentDo> queryLimit() {
+        PageHelper.startPage(1, 10);
+        List<StudentDo> studentDos = stuMapper.stuLimit();
+        return studentDos;
+    }
+}
